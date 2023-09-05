@@ -20,6 +20,7 @@ using SymbolicUtils: BasicSymbolic, Pow
 @scalar_rule sinh(x::BasicSymbolic) cosh(x)
 @scalar_rule cosh(x::BasicSymbolic) sinh(x)
 @scalar_rule tanh(x::BasicSymbolic) 1-Ω^2
+@scalar_rule tanh_fast(x::BasicSymbolic) 1-Ω^2
 @scalar_rule acosh(x::BasicSymbolic) inv(sqrt(x - 1) * sqrt(x + 1))
 @scalar_rule acoth(x::BasicSymbolic) inv(1 - x^2)
 @scalar_rule acsch(x::BasicSymbolic) inv(x^2 * -sqrt(1 + x^-2))
@@ -31,7 +32,7 @@ using SymbolicUtils: BasicSymbolic, Pow
 dummy = (NoTangent(), 1)
 @syms t₁
 for func in (+, -, deg2rad, rad2deg,
-    sinh, cosh, tanh,
+    sinh, cosh, tanh, tanh_fast,
     asin, acos, atan, asec, acsc, acot,
     log, log10, log1p, log2,
     asinh, acosh, atanh, asech, acsch,
